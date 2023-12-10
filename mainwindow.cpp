@@ -53,21 +53,33 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::resizeEvent(QResizeEvent *event) {
+void MainWindow::resizeEvent(QResizeEvent *event) 
+
+{
     QMainWindow::resizeEvent(event);
-    if (ui->graphicsView->scene() && !ui->graphicsView->scene()->items().isEmpty()) {
+    if (ui->graphicsView->scene() && !ui->graphicsView->scene()->items().isEmpty()) 
+    
+    {
         // Adjust the view's scene rectangle when the main window is resized
         ui->graphicsView->fitInView(ui->graphicsView->scene()->itemsBoundingRect(), Qt::KeepAspectRatio);
     }
 }
 
 
-void MainWindow::paintEvent(QPaintEvent * /* event */) {
+void MainWindow::paintEvent(QPaintEvent * /* event */) 
+
+{
     // Rendering grid in QGraphicsView
-    if (grid != nullptr) {
+    if (grid != nullptr) 
+    
+    {
         scene->clear();
-        for (int x = 0; x < grid->getWidth(); ++x) {
-            for (int y = 0; y < grid->getHeight(); ++y) {
+        for (int x = 0; x < grid->getWidth(); ++x) 
+        
+        {
+            for (int y = 0; y < grid->getHeight(); ++y)
+                
+            {
                 bool isCellAlive = grid->isCellAlive(x, y);
                 bool isDying = grid->isCellDying(x, y);
                 int cellAge = grid->getCellAge(x, y);
@@ -76,10 +88,14 @@ void MainWindow::paintEvent(QPaintEvent * /* event */) {
                 QRectF cellRect(x * cellSize, y * cellSize, cellSize, cellSize);
                 QGraphicsRectItem *cellItem = new QGraphicsRectItem(cellRect);
 
-                if (isCellAlive && isDying) {
+                if (isCellAlive && isDying) 
+                
+                {
                     // Cell is dying, set its color to red
                     cellItem->setBrush(Qt::red);
-                } else if (isCellAlive) {
+                } else if (isCellAlive) 
+                
+                {
                     // Cell is alive, set its color from the grid
                     cellItem->setBrush(cellColor);
                 } else {
@@ -95,7 +111,9 @@ void MainWindow::paintEvent(QPaintEvent * /* event */) {
 
 void MainWindow::updateGridDisplay()
 {
-    if (simulationRunning && grid != nullptr) {
+    if (simulationRunning && grid != nullptr) 
+    
+    {
         grid->nextGeneration();
         this->update(); // This will trigger a call to paintEvent
     }
@@ -103,7 +121,9 @@ void MainWindow::updateGridDisplay()
 
 void MainWindow::on_StartButton_clicked()
 {
-    if (!simulationRunning && grid != nullptr) {
+    if (!simulationRunning && grid != nullptr) 
+    
+    {
         simulationRunning = true;
         ui->StartButton->setEnabled(false);
         ui->StopButton->setEnabled(true);
@@ -114,7 +134,9 @@ void MainWindow::on_StartButton_clicked()
 
 void MainWindow::on_StopButton_clicked()
 {
-    if (simulationRunning) {
+    if (simulationRunning) 
+    
+    {
         timer->stop();
         simulationRunning = false;
         ui->StartButton->setEnabled(true);
@@ -125,7 +147,9 @@ void MainWindow::on_StopButton_clicked()
 
 void MainWindow::on_ResetButton_clicked()
 {
-    if (grid != nullptr) {
+    if (grid != nullptr) 
+    
+    {
         grid->reset();
         this->update();
         ui->StartButton->setEnabled(true);
@@ -135,10 +159,14 @@ void MainWindow::on_ResetButton_clicked()
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton && !simulationRunning && grid != nullptr) {
+    if (event->button() == Qt::LeftButton && !simulationRunning && grid != nullptr) 
+    
+    {
         int x = event->pos().x() / cellSize;
         int y = event->pos().y() / cellSize;
-        if (x >= 0 && x < grid->getWidth() && y >= 0 && y < grid->getHeight()) {
+        if (x >= 0 && x < grid->getWidth() && y >= 0 && y < grid->getHeight()) 
+        
+        {
             grid->toggleCell(x, y);
             this->update();
         }
@@ -151,7 +179,9 @@ void MainWindow::initializeGrid()
     int height = ui->setGridHeight->value();
     int startingCells = ui->setStartingCells->value();
 
-    if (grid != nullptr) {
+    if (grid != nullptr) 
+    
+    {
         delete grid;
     }
 
@@ -182,14 +212,18 @@ void MainWindow::on_setGridHeight_textChanged(const QString &arg1)
 void MainWindow::on_UpdateSpeedChanged(int value)
 {
     updateSpeed = value; // Set the new update speed
-    if (timer != nullptr && simulationRunning) {
+    if (timer != nullptr && simulationRunning) 
+    
+    {
         timer->start(updateSpeed); // Update the timer interval if the simulation is running
     }
 }
 
 void MainWindow::onMainWindowResized()
 {
-    if (scene != nullptr) {
+    if (scene != nullptr) 
+    
+    {
         ui->graphicsView->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
     }
 }
