@@ -6,7 +6,9 @@
 #include <QGraphicsScene>
 #include "grid.h"
 
-namespace Ui {
+namespace Ui 
+
+{
 class MainWindow;
 }
 
