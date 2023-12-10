@@ -13,6 +13,8 @@ AutoCell is an interactive implementation of Conway's Game of Life, a cellular a
 
 ![AutoCell UI](images/AutoCell(1).png "AutoCell UI")
 
+![AutoCell UI 2](images/AutoCell(2).png "AutoCell UI 2")
+
 [Watch the Video](https://youtu.be/g1bRZ8UvDqw)
 
 ## Getting Started
