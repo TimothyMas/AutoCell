@@ -10,7 +10,7 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 # DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-# Change the target name to AutoCell
+# Change the target name to...
 TARGET = AutoCell
 
 SOURCES += \
