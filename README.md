@@ -11,7 +11,7 @@ AutoCell is an interactive implementation of Conway's Game of Life, a cellular a
 - User-friendly GUI for customization
 - Educational tool for exploring emergent behavior
 
-![AutoCell UI](AutoCell(1).png "AutoCell UI")
+![AutoCell UI](images/AutoCell(1).png "AutoCell UI")
 
 [Watch the Video](https://youtu.be/g1bRZ8UvDqw)
 
