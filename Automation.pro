@@ -1,5 +1,3 @@
-# AutoCell.pro
-
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -10,17 +8,18 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 # DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-# Change the target name to...
 TARGET = AutoCell
 
 SOURCES += \
     grid.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    templates.cpp
 
 HEADERS += \
     grid.h \
-    mainwindow.h
+    mainwindow.h \
+    templates.h
 
 FORMS += \
     mainwindow.ui
